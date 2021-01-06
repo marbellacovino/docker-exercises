@@ -37,7 +37,7 @@ Editar el index.html creado con el siguiente contenido:
 </html>
 ```
 
- Crear un contenedor nuevo a partir de la imagen de nginx version-1.19.3, con el nombre nginx-hw01 en el puerto 8080, y un volumen static_content con el contenido del directorio / usr/share/nginx/html del contenedor, que es donde Nginx almacena su contenido HTML predeterminado.
+ Crear un contenedor nuevo a partir de la imagen de nginx version-1.19.3, con el nombre nginx-hw01 en el puerto 8080, y un volumen static_content con el contenido del directorio /usr/share/nginx/html del contenedor, que es donde Nginx almacena su contenido HTML predeterminado.
  ```sh
  docker container run -d --name nginx-hw01 -p 8080:80 -v static_content:/usr/share/nginx/html nginx:1.19.3
  ```
@@ -46,6 +46,10 @@ Editar el index.html creado con el siguiente contenido:
  docker container ls
  ```
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.0.png "Contenedores Corriendo")
+
+ Verificamos que el volumen se ha creado correctamente
+
+ ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.2.png "Volumenes")
 
  Copiar el index.html que creamos en nuestro sistema local al directorio que contiene el contenido HTML 
   ```sh
