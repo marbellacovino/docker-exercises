@@ -51,9 +51,14 @@ Editar el index.html creado con el siguiente contenido:
 
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.2.png "Volumenes")
 
+Inspeccionamos que el contenedor contenga el volumen...
+ ```sh
+docker container inspect node-healthcheck 
+```
+
 ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.3.png "Volumenes")
 
- Copiar el index.html que creamos en nuestro sistema local al directorio que contiene el contenido HTML 
+ Finalmente copiamos el index.html que creamos en nuestro sistema local al directorio que contiene el contenido HTML predeterminado. Este contenido persiste en el volumen static_content ya que asociamos el volumen al path del contenido HTML predeterminado. 
   ```sh
  docker cp answer_exercise_3/index.html nginx-hw01:usr/share/nginx/html/index.html
  ```
