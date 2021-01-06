@@ -31,7 +31,7 @@ Editar el index.html creado con el siguiente contenido:
 </head>
 <body>
 <h1>HOMEWORK 1</h1>
-<p>Imagen base NGINX haciendo uso de la versión 1.19.3</p>
+<p>Imagen base NGINX haciendo uso de la version 1.19.3</p>
 
 </body>
 </html>
@@ -50,6 +50,8 @@ Editar el index.html creado con el siguiente contenido:
  Verificamos que el volumen se ha creado correctamente
 
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.2.png "Volumenes")
+
+![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.3.png "Volumenes")
 
  Copiar el index.html que creamos en nuestro sistema local al directorio que contiene el contenido HTML 
   ```sh
