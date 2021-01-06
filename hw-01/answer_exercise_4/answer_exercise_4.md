@@ -6,7 +6,7 @@ Correr los siguientes comandos en el terminal dentro del directorio hw-01:
 
 Creamos una imagen de [node:12-alpine](https://hub.docker.com/_/node) a partir de un Dockerfile, para esto debemos crear un Dockerfile.js y configurarlo:
 ```sh
-touch answer_exercise_4/Dockerfile.js
+$ touch answer_exercise_4/Dockerfile.js
 ```
 ##### Dockerfile.js 
 ```sh
@@ -30,7 +30,7 @@ CMD [ "node","app.js" ]
 ##### Configuración del Healhcheck:
 Crear en el root folder un archivo healthcheck.js para configurar un custom health check
 ```sh
-touch answer_exercise_4/healthcheck.js
+$ touch answer_exercise_4/healthcheck.js
 ```
 ##### healthcheck.js 
 ```javascript
