@@ -68,15 +68,13 @@ WORKDIR /usr/src/app
 COPY ./src .
 # Execute npm install process
 RUN npm install
-# Bundle app source
-COPY . .
 # Expose port 8080
 EXPOSE 8080
 # Customize the healthcheck configuration
-HEALTHCHECK --interval=45s --timeout=14s --start-period=30s --retries=2 \  
+HEALTHCHECK --interval=45s --timeout=5s --start-period=30s --retries=2 \  
     CMD node healthcheck.js
 # Execute npm start
-CMD [ "node","app.js" ]
+CMD [ "npm","start" ]
 ```
 Finalmente podemos construir y correr nuestro nuevo contenedor con los siguientes comandos:
 ```sh
@@ -85,10 +83,28 @@ docker container run -d --name node-healthcheck -p 8080:8080 node-healthcheck
 ```
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/healthcheck-1.0.png)
 
-Para verificar que nuestro healthcheck funciona:
+Para verificar que nuestro healthcheck funciona se realizaron las siguientes pruebas:
+
+En nuestro Dockerfile.js se modifico el timeout
+
+```sh
+ # Customize the healthcheck configuration
+HEALTHCHECK --interval=45s --timeout=5s --retries=2 \  
+    CMD node healthcheck.js
+```
+El resultado fue el siguiente:
 
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/healthcheck-1.1.png)
 
-Nuestro servicio se ha iniciado con exito y se muestra healthy.
+
+ Ahora modificamos nuestro start-period=15s
+```sh
+ # Customize the healthcheck configuration
+HEALTHCHECK --interval=45s --timeout=5s --start-period=15s --retries=2 \  
+    CMD node healthcheck.js
+```
+ ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/healthcheck-1.2.png)
+
+En este caso nuestro servicio se ha iniciado con exito y se muestra healthy en ambos casos.
 
 
