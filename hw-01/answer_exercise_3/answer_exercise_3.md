@@ -45,7 +45,7 @@ Editar el index.html creado con el siguiente contenido:
   ```sh
  docker container ls
  ```
- ![Alt text](/hw-01/images/nginx-1.0 "Contenedores Corriendo")
+ ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.0.png "Contenedores Corriendo")
 
  Copiar el index.html que creamos en nuestro sistema local al directorio que contiene el contenido HTML 
   ```sh
@@ -55,4 +55,4 @@ Editar el index.html creado con el siguiente contenido:
 ```sh
 http://localhost:8080/
 ```
- ![Alt text](/hw-01/images/nginx-1.1 "index")
+ ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/nginx-1.1.png "index")
