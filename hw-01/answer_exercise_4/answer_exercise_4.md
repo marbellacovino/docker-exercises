@@ -9,7 +9,6 @@ Creamos una imagen de [node:12-alpine](https://hub.docker.com/_/node) a partir d
 touch answer_exercise_4/Dockerfile.js
 ```
 ##### Dockerfile.js 
-#
 ```sh
 FROM node:12-alpine
 # Update packages inside container image
@@ -32,7 +31,6 @@ Crear en el root folder un archivo healthcheck.js para configurar un custom heal
 touch answer_exercise_4/healthcheck.js
 ```
 ##### healthcheck.js 
-#
 ```javascript
 var http = require("http");
 var options = {
@@ -56,8 +54,8 @@ request.end();
 ```
 Este código verifica si nuestra aplicación se está ejecutando en el puerto 3000 usando la biblioteca http provista con Nodejs. Si el servidor devuelve un estado 200, saldrá con la salida 0; de lo contrario, saldrá 1.
 
-##### Configuración del Dockerfile
-Ahora tenemos que configurar el Dockerfile con nuestro custom health check
+### Configuración del Dockerfile
+Ahora tenemos que configurar el Dockerfile.js con nuestro custom health check
 ```sh
 FROM node:12-alpine
 # Update packages inside container image
