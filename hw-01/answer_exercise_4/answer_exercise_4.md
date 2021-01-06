@@ -19,10 +19,12 @@ WORKDIR /usr/src/app
 COPY ./src .
 # Execute npm install process
 RUN npm install
-# Expose port 3000
-EXPOSE 3000
+# Bundle app source
+COPY . .
+# Expose port 8080
+EXPOSE 8080
 # Execute npm start
-CMD [ "npm","start" ]
+CMD [ "node","app.js" ]
 ```
 
 ##### Configuración del Healhcheck:
@@ -35,7 +37,7 @@ touch answer_exercise_4/healthcheck.js
 var http = require("http");
 var options = {
   host: "localhost",
-  port: "3000",
+  port: "8080",
   timeout: 2000,
 };
 var request = http.request(options, (res) => {
@@ -52,7 +54,7 @@ request.on("error", function (err) {
 });
 request.end();
 ```
-Este código verifica si nuestra aplicación se está ejecutando en el puerto 3000 usando la biblioteca http provista con Nodejs. Si el servidor devuelve un estado 200, saldrá con la salida 0; de lo contrario, saldrá 1.
+Este código verifica si nuestra aplicación se está ejecutando en el puerto 8080 usando la biblioteca http provista con Nodejs. Si el servidor devuelve un estado 200, saldrá con la salida 0; de lo contrario, saldrá 1.
 
 ### Configuración del Dockerfile
 Ahora tenemos que configurar el Dockerfile.js con nuestro custom health check
@@ -66,17 +68,27 @@ WORKDIR /usr/src/app
 COPY ./src .
 # Execute npm install process
 RUN npm install
-# Expose port 3000
-EXPOSE 3000
+# Bundle app source
+COPY . .
+# Expose port 8080
+EXPOSE 8080
 # Customize the healthcheck configuration
-HEALTHCHECK --interval=45s --timeout=5s --start-period=30s --retries=2 \  
+HEALTHCHECK --interval=45s --timeout=14s --start-period=30s --retries=2 \  
     CMD node healthcheck.js
 # Execute npm start
-CMD [ "npm","start" ]
+CMD [ "node","app.js" ]
 ```
 Finalmente podemos construir y correr nuestro nuevo contenedor con los siguientes comandos:
 ```sh
 docker build -t node-healthcheck .
-docker container run -d --name node-healthcheck -p 8080:3000 node-healthcheck 
+docker container run -d --name node-healthcheck -p 8080:8080 node-healthcheck 
 ```
  ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/healthcheck-1.0.png)
+
+Para verificar que nuestro healthcheck funciona:
+
+ ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/healthcheck-1.1.png)
+
+Nuestro servicio se ha iniciado con exito y se muestra healthy.
+
+
