@@ -8,22 +8,22 @@ Crear una carpeta nueva y copiar el contenido del ejercicio 4
 ```sh
 $  cd hw-01
 $  mkdir answer_exercise_5
-cp -a answer_exercise_4/ answer_exercise_5
+$ cp -a answer_exercise_4/ answer_exercise_5
 ```
 Crear el fichero docker-compose.yml
 ```sh
-touch answer_exercise_5/docker-compose.yml
+$ touch answer_exercise_5/docker-compose.yml
 ```
 Configurar el fichero docker-compose:
 
 ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/docker-compose.png)
 
-Crear el fichero docker-compose.yml
+Finalmente construimos nuestra imagen a partir del Dockerfile y con docker-compose iniciamos todos nuestros servicios...
 ```sh
-cd answer_exercise_5
-docker build -t proofofconcept .
-docker-compose up
-docker container ls
+$ cd answer_exercise_5
+$ docker build -t proofofconcept .
+$ docker-compose up
+$ docker container ls
 ```
 ![Alt text](https://github.com/marbellacovino/docker-exercises/blob/master/hw-01/images/docker-compose1.1.png)
 
